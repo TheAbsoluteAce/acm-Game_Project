@@ -6,26 +6,53 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float speed;
+    public float jumpRate;
+    public SpriteRenderer sr;
+    public AudioClip JumpClip;
+    public AudioClip winClip;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        float MoveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = Input.GetAxis("Horizontal");
 
-        if(MoveHorizontal < 0)
+        if (moveHorizontal < 0)
         {
             sr.flipX = true;
-        }   else if(MoveHorizontal > 0)
-        { 
-                sr.flipY=true;
+        }
+        else if (moveHorizontal > 0)
+        {
+            sr.flipX = false;  
         }
 
-        rb.velocity = new Vector2(MoveHorizontal * speed, rb.velocity.y);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {  
+            rb.velocity = new Vector2(moveHorizontal * speed, jumpRate);
+            AudioManager.PlaySound(JumpClip);
+        }
+        else
+        {
+            rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
+        }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Dead Zone"))
+        {
+            Debug.Log("YOU LOSE!");
+        }  else if (collision.CompareTag("Cherry"))
+        {
+            Debug.Log("YOU WIN!");
+            AudioManager.PlaySound(winClip);
+        }
+    }
+    
 }

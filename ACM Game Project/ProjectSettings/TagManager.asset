@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Dead Zone
+  - Cherry
   layers:
   - Default
   - TransparentFX
@@ -49,6 +51,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3274777827
+    locked: 0
+  - name: items
+    uniqueID: 215602445
     locked: 0
   - name: grass
     uniqueID: 2023821633
