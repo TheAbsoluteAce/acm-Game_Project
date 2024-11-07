@@ -3,7 +3,11 @@ guid: 6c826cd81ccddfb4bbe2ca9ed601fb91
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rb: {instanceID: 0}
+  - sr: {instanceID: 0}
+  - JumpClip: {fileID: 8300000, guid: 861510434ba9b66458f361aabec86ba1, type: 3}
+  - winClip: {fileID: 8300000, guid: f0e41724ae69dc445914e7286ee25d1e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
